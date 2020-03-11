@@ -1,3 +1,8 @@
+#     THIS .n3 FILE IS  THE EDITED SOURCE from which the .ttl and .rdf  are generated
+#
+# In general, so not put comments as n3 comments, put them in the ontology so they
+# are available to inform developers using the ontology.
+
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix s: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix dct: <http://purl.org/dc/terms/>.
@@ -22,28 +27,36 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
  """.
 
   gpx:ageofdgpsdata     a rdf:Property;
+       :label "age of DGPS data"@en;
        :comment """Number of seconds since last DGPS update.""";
        :range xsd:decimal .
 
   gpx:author     a rdf:Property;
+       :label "author"@en;
        :comment """The person or organization who created the GPX file.""";
        :range gpx:PersonType .
 
   gpx:bounds     a rdf:Property;
+       :label "bounds"@en;
        :comment """Minimum and maximum coordinates which describe the extent of the coordinates in the file.""";
        :range gpx:BoundsType .
 
   gpx:cmt     a rdf:Property;
+       :label "comment"@en;
        :comment """GPS comment for route.""",
               """GPS comment for track.""",
               """GPS waypoint comment. Sent to GPS as comment.""";
        :range xsd:string .
 
   gpx:copyright     a rdf:Property;
+       :label "copyright info"@en;
+
        :comment """Copyright and license information governing use of the file.""";
        :range gpx:CopyrightType .
 
   gpx:desc     a rdf:Property;
+       :label "description"@en;
+
        :comment """A text description of the element. Holds additional information about the element intended for the user, not the GPS.""",
               """Text description of route for user.  Not sent to GPS.""",
               """User description of track.""",
@@ -51,22 +64,26 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range xsd:string .
 
   gpx:dgpsid     a rdf:Property;
+       :label "station id"@en;
        :comment """ID of DGPS station used in differential correction.""";
        :range gpx:DgpsStationType .
 
   gpx:ele     a rdf:Property;
+       :label "elevation"@en;
        :comment """Elevation (in meters) of the point.""",
               """The elevation (in meters) of the point.""";
        :range xsd:decimal .
 
   gpx:email     a rdf:Property;
+       :label "email"@en;
        :comment """Email address.""";
        :range gpx:EmailType .
 
   gpx:extensions     a rdf:Property;
+       :label "extensions"@en;
        :comment """Information about the GPX file, author, and copyright restrictions goes in the metadata section.  Providing rich,
   meaningful information about your GPX files allows others to search for and use your GPS data.""",
-              """The latitude of the point.  Decimal degrees, WGS84 datum.""",
+              """The latitude of the point.  Decimal degrees, WGS84 datum.""",  # @@ These comments seem nonsense
               """You can add extend GPX by adding your own elements from another schema here.""",
               """You must include the name or URL of the software that created your GPX document.  This allows others to
   inform the creator of a GPX instance document that fails to validate.""",
@@ -78,10 +95,12 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range gpx:ExtensionsType .
 
   gpx:fix     a rdf:Property;
+         :label "fix type"@en;
        :comment """Type of GPX fix.""";
        :range gpx:FixType .
 
   gpx:geoidheight     a rdf:Property;
+         :label "geoid height"@en;
        :comment """Height (in meters) of geoid (mean sea level) above WGS84 earth ellipsoid.  As defined in NMEA GGA message.""";
        :range xsd:decimal .
 
@@ -92,20 +111,24 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range gpx:GpxType .
 
   gpx:hdop     a rdf:Property;
+              :label "horiz dilution"@en;
        :comment """Horizontal dilution of precision.""";
        :range xsd:decimal .
 
   gpx:keywords     a rdf:Property;
+         :label "keywords"@en;
        :comment """Keywords associated with the file.  Search engines or databases can use this information to classify the data.""";
        :range xsd:string .
 
   gpx:license     a rdf:Property;
+             :label "license"@en;
        :comment """Copyright holder (TopoSoft, Inc.)""",
               """Link to external file containing license text.""",
               """A link to an external resource (Web page, digital photo, video clip, etc) with additional information.""";
        :range xsd:anyURI .
 
   gpx:link     a rdf:Property;
+         :label "see also"@en;
        :comment """Link to additional information about the waypoint.""",
               """Links to external information about the route.""",
               """Links to external information about track.""",
@@ -115,14 +138,17 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range gpx:LinkType .
 
   gpx:magvar     a rdf:Property;
+       :label "mag variation"@en;
        :comment """Magnetic variation (in degrees) at the point""";
        :range gpx:DegreesType .
 
   gpx:metadata     a rdf:Property;
+       :label "metadata"@en;
        :comment """Metadata about the file.""";
        :range gpx:MetadataType .
 
   gpx:name     a rdf:Property;
+       :label "name"@en;
        :comment """GPS name of route.""",
               """GPS name of track.""",
               """The GPS name of the waypoint. This field will be transferred to and from the GPS. GPX does not place restrictions on the length of this field or the characters contained in it. It is up to the receiving application to validate the field before sending it to the GPS.""",
@@ -131,15 +157,18 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range xsd:string .
 
   gpx:number     a rdf:Property;
+       :label "number"@en;
        :comment """GPS route number.""",
               """GPS track number.""";
        :range xsd:nonNegativeInteger .
 
   gpx:pdop     a rdf:Property;
+       :label "Position dilution"@en;
        :comment """Position dilution of precision.""";
        :range xsd:decimal .
 
   gpx:pt     a rdf:Property;
+       :label "point"@en;
        :comment """Ordered list of geographic points.""",
               """The latitude of the point.  Decimal degrees, WGS84 datum.""",
               """The longitude of the point.  Decimal degrees, WGS84 datum.""",
@@ -154,32 +183,39 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range gpx:PtType .
 
   gpx:rte     a rdf:Property;
+         :label "routes"@en;
        :comment """A list of routes.""";
        :range gpx:RteType .
 
   gpx:rtept     a rdf:Property;
+         :label "route points"@en;
        :comment """A list of route points.""",
               """trk represents a track - an ordered list of points describing a path.""";
        :range gpx:WptType .
 
   gpx:sat     a rdf:Property;
+         :label "satelites used"@en;
        :comment """Number of satellites used to calculate the GPX fix.""";
        :range xsd:nonNegativeInteger .
 
   gpx:src     a rdf:Property;
+         :label "source"@en;
        :comment """Source of data. Included to give user some idea of reliability and accuracy of data.""",
               """Source of data. Included to give user some idea of reliability and accuracy of data.  "Garmin eTrex", "USGS quad Boston North", e.g.""";
        :range xsd:string .
 
   gpx:sym     a rdf:Property;
+           :label "symbol text"@en;
        :comment """Text of GPS symbol name. For interchange with other programs, use the exact spelling of the symbol as displayed on the GPS.  If the GPS abbreviates words, spell them out.""";
        :range xsd:string .
 
   gpx:text     a rdf:Property;
+         :label "link text"@en;
        :comment """Text of hyperlink.""";
        :range xsd:string .
 
   gpx:time     a rdf:Property;
+         :label "time"@en;
        :comment """Creation/modification timestamp for element. Date and time in are in Univeral Coordinated Time (UTC), not local time! Conforms to ISO 8601 specification for date/time representation. Fractional seconds are allowed for millisecond timing in tracklogs.""",
               """The creation date of the file.""",
               """The latitude of the point.  Decimal degrees, WGS84 datum.""",
@@ -188,21 +224,26 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range xsd:dateTime .
 
   gpx:trk     a rdf:Property;
+         :label "track"@en; # maybe one of these arcs for each track? @@ check
        :comment """A list of tracks.""";
        :range gpx:TrkType .
 
   gpx:trkpt     a rdf:Property;
+         :label "track  point"@en;
        :comment """A Track Point holds the coordinates, elevation, timestamp, and metadata for a single point in a track.""";
        :range gpx:WptType .
 
   gpx:trkseg     a rdf:Property;
-       :comment """You can add extend GPX by adding your own elements from another schema here.""",
-              """A Track Segment holds a list of Track Points which are logically connected in order. To represent a single GPS track where GPS reception was lost, or the GPS receiver was turned off, start a new Track Segment for each continuous span of track data.""",
-              """You can add extend GPX by adding your own elements from another schema here.""",
-              """A Track Segment holds a list of Track Points which are logically connected in order. To represent a single GPS track where GPS reception was lost, or the GPS receiver was turned off, start a new Track Segment for each continuous span of track data.""";
+         :label "track segment"@en;
+       :comment
+              """A Track Segment holds a list of Track Points which are logically connected in order.
+              To represent a single GPS track where GPS reception was lost, or the GPS receiver
+               was turned off, start a new Track Segment for each continuous span of track data.""";
        :range gpx:TrksegType .
 
   gpx:type     a rdf:Property;
+       :label "type"@en;
+
        :comment """Type (classification) of route.""",
               """Type (classification) of the waypoint.""",
               """Type (classification) of track.""",
@@ -215,13 +256,21 @@ GPX uses the following conventions: all coordinates are relative to the WGS84 da
        :range xsd:string .
 
   gpx:vdop     a rdf:Property;
+      :label "vertical dilution"@en;
        :comment """Vertical dilution of precision.""";
        :range xsd:decimal .
 
   gpx:wpt     a rdf:Property;
+       :label "waypoint"@en; # @@ check should b e plural
        :comment """A list of waypoints.""";
        :range gpx:WptType .
 
   gpx:year     a rdf:Property;
+  :label "year"@en;
+
        :comment """Year of copyright.""";
        :range xsd:gYear .
+
+
+  # ENDS
+  
