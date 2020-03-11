@@ -1,0 +1,224 @@
+     @prefix : <#> .
+    @prefix dct: <http://purl.org/dc/terms/> .
+    @prefix gpx: <http://www.w3.org/ns/pim/gpx#> .
+    @prefix owl: <http://www.w3.org/2002/07/owl#> .
+    @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+    @prefix s: <http://www.w3.org/2000/01/rdf-schema#> .
+    @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+    
+    <>     a owl:ontology;
+         :comment """GPX schema version 1.1 - For more information on GPX and this schema, visit http://www.topografix.com/gpx.asp
+
+GPX uses the following conventions: all coordinates are relative to the WGS84 datum.  All measurements are in metric units.""",
+                """This RDF ontology is deemed to contain as RDF terms all
+ the terms which are standardized as XML elements in the GPX specification.
+ """;
+         dct:title "Ontology for GPS data from GPX";
+         s:comment """This RDF ontology is deemed to contain as RDF terms all
+   the terms which are standardized as XML elements in the GPX specification.
+
+   This ontology file has been produced to fill the place but is untested.""" .
+    
+    gpx:ageofdgpsdata     a rdf:Property;
+         :comment "Number of seconds since last DGPS update.";
+         :range xsd:decimal .
+    
+    gpx:author     a rdf:Property;
+         :comment "The person or organization who created the GPX file.";
+         :range gpx:PersonType .
+    
+    gpx:bounds     a rdf:Property;
+         :comment "Minimum and maximum coordinates which describe the extent of the coordinates in the file.";
+         :range gpx:BoundsType .
+    
+    gpx:cmt     a rdf:Property;
+         :comment "GPS comment for route.",
+                "GPS comment for track.",
+                "GPS waypoint comment. Sent to GPS as comment.";
+         :range xsd:string .
+    
+    gpx:copyright     a rdf:Property;
+         :comment "Copyright and license information governing use of the file.";
+         :range gpx:CopyrightType .
+    
+    gpx:desc     a rdf:Property;
+         :comment "A description of the contents of the GPX file.",
+                "A text description of the element. Holds additional information about the element intended for the user, not the GPS.",
+                "Text description of route for user.  Not sent to GPS.",
+                "User description of track.";
+         :range xsd:string .
+    
+    gpx:dgpsid     a rdf:Property;
+         :comment "ID of DGPS station used in differential correction.";
+         :range gpx:DgpsStationType .
+    
+    gpx:ele     a rdf:Property;
+         :comment "Elevation (in meters) of the point.",
+                "The elevation (in meters) of the point.";
+         :range xsd:decimal .
+    
+    gpx:email     a rdf:Property;
+         :comment "Email address.";
+         :range gpx:EmailType .
+    
+    gpx:extensions     a rdf:Property;
+         :comment """Information about the GPX file, author, and copyright restrictions goes in the metadata section.  Providing rich,
+  meaningful information about your GPX files allows others to search for and use your GPS data.""",
+                """Information about the copyright holder and any license governing use of this file.  By linking to an appropriate license,
+ you may place your data into the public domain or grant additional usage rights.""",
+                "The latitude of the point.  Decimal degrees, WGS84 datum.",
+                "You can add extend GPX by adding your own elements from another schema here.",
+                """You must include the name or URL of the software that created your GPX document.  This allows others to
+  inform the creator of a GPX instance document that fails to validate.""",
+                "You must include the version number in your GPX document.",
+                "rte represents route - an ordered list of waypoints representing a series of turn points leading to a destination.",
+                "wpt represents a waypoint, point of interest, or named feature on a map.";
+         :range gpx:ExtensionsType .
+    
+    gpx:fix     a rdf:Property;
+         :comment "Type of GPX fix.";
+         :range gpx:FixType .
+    
+    gpx:geoidheight     a rdf:Property;
+         :comment "Height (in meters) of geoid (mean sea level) above WGS84 earth ellipsoid.  As defined in NMEA GGA message.";
+         :range xsd:decimal .
+    
+    gpx:gpx     a rdf:Property;
+         :comment """GPX documents contain a metadata header, followed by waypoints, routes, and tracks.  You can add your own elements
+  to the extensions section of the GPX document.""",
+                "GPX is the root element in the XML file.";
+         :range gpx:GpxType .
+    
+    gpx:hdop     a rdf:Property;
+         :comment "Horizontal dilution of precision.";
+         :range xsd:decimal .
+    
+    gpx:keywords     a rdf:Property;
+         :comment "Keywords associated with the file.  Search engines or databases can use this information to classify the data.";
+         :range xsd:string .
+    
+    gpx:license     a rdf:Property;
+         :comment "A link to an external resource (Web page, digital photo, video clip, etc) with additional information.",
+                "Copyright holder (TopoSoft, Inc.)",
+                "Link to external file containing license text.";
+         :range xsd:anyURI .
+    
+    gpx:link     a rdf:Property;
+         :comment "A geographic point with optional elevation and time.  Available for use by other schemas.",
+                "Link to Web site or other external information about person.",
+                "Link to additional information about the waypoint.",
+                "Links to external information about the route.",
+                "Links to external information about track.",
+                "URLs associated with the location described in the file.";
+         :range gpx:LinkType .
+    
+    gpx:magvar     a rdf:Property;
+         :comment "Magnetic variation (in degrees) at the point";
+         :range gpx:DegreesType .
+    
+    gpx:metadata     a rdf:Property;
+         :comment "Metadata about the file.";
+         :range gpx:MetadataType .
+    
+    gpx:name     a rdf:Property;
+         :comment "GPS name of route.",
+                "GPS name of track.",
+                "Name of person or organization.",
+                "The GPS name of the waypoint. This field will be transferred to and from the GPS. GPX does not place restrictions on the length of this field or the characters contained in it. It is up to the receiving application to validate the field before sending it to the GPS.",
+                "The name of the GPX file.";
+         :range xsd:string .
+    
+    gpx:number     a rdf:Property;
+         :comment "GPS route number.",
+                "GPS track number.";
+         :range xsd:nonNegativeInteger .
+    
+    gpx:pdop     a rdf:Property;
+         :comment "Position dilution of precision.";
+         :range xsd:decimal .
+    
+    gpx:pt     a rdf:Property;
+         :comment "Ordered list of geographic points.",
+                "Represents a differential GPS station.",
+                "The latitude of the point.  Decimal degrees, WGS84 datum.",
+                "The longitude of the point.  Decimal degrees, WGS84 datum.",
+                "The maximum latitude.",
+                "The maximum longitude.",
+                "The minimum latitude.",
+                "The minimum longitude.",
+                "Two lat/lon pairs defining the extent of an element.",
+                """Type of GPS fix.  none means GPS had no fix.  To signify "the fix info is unknown, leave out fixType entirely. pps = military signal used""",
+                "Used for bearing, heading, course.  Units are decimal degrees, true (not magnetic).";
+         :range gpx:PtType .
+    
+    gpx:rte     a rdf:Property;
+         :comment "A list of routes.";
+         :range gpx:RteType .
+    
+    gpx:rtept     a rdf:Property;
+         :comment "A list of route points.",
+                "trk represents a track - an ordered list of points describing a path.";
+         :range gpx:WptType .
+    
+    gpx:sat     a rdf:Property;
+         :comment "Number of satellites used to calculate the GPX fix.";
+         :range xsd:nonNegativeInteger .
+    
+    gpx:src     a rdf:Property;
+         :comment "Source of data. Included to give user some idea of reliability and accuracy of data.",
+                """Source of data. Included to give user some idea of reliability and accuracy of data.  "Garmin eTrex", "USGS quad Boston North", e.g.""";
+         :range xsd:string .
+    
+    gpx:sym     a rdf:Property;
+         :comment "Text of GPS symbol name. For interchange with other programs, use the exact spelling of the symbol as displayed on the GPS.  If the GPS abbreviates words, spell them out.";
+         :range xsd:string .
+    
+    gpx:text     a rdf:Property;
+         :comment "Text of hyperlink.";
+         :range xsd:string .
+    
+    gpx:time     a rdf:Property;
+         :comment "An ordered sequence of points.  (for polygons or polylines, e.g.)",
+                "Creation/modification timestamp for element. Date and time in are in Univeral Coordinated Time (UTC), not local time! Conforms to ISO 8601 specification for date/time representation. Fractional seconds are allowed for millisecond timing in tracklogs.",
+                "The creation date of the file.",
+                "The latitude of the point.  Decimal degrees, WGS84 datum.",
+                "The time that the point was recorded.";
+         :range xsd:dateTime .
+    
+    gpx:trk     a rdf:Property;
+         :comment "A list of tracks.";
+         :range gpx:TrkType .
+    
+    gpx:trkpt     a rdf:Property;
+         :comment "A Track Point holds the coordinates, elevation, timestamp, and metadata for a single point in a track.";
+         :range gpx:WptType .
+    
+    gpx:trkseg     a rdf:Property;
+         :comment "A Track Segment holds a list of Track Points which are logically connected in order. To represent a single GPS track where GPS reception was lost, or the GPS receiver was turned off, start a new Track Segment for each continuous span of track data.",
+                "You can add extend GPX by adding your own elements from another schema here.";
+         :range gpx:TrksegType .
+    
+    gpx:type     a rdf:Property;
+         :comment "A person or organization.",
+                "An email address.  Broken into two parts (id and domain) to help prevent email harvesting.",
+                "Mime type of content (image/jpeg)",
+                "Type (classification) of route.",
+                "Type (classification) of the waypoint.",
+                "Type (classification) of track.",
+                "URL of hyperlink.",
+                "domain half of email address (hotmail.com)",
+                "id half of email address (billgates2004)";
+         :range xsd:string .
+    
+    gpx:vdop     a rdf:Property;
+         :comment "Vertical dilution of precision.";
+         :range xsd:decimal .
+    
+    gpx:wpt     a rdf:Property;
+         :comment "A list of waypoints.";
+         :range gpx:WptType .
+    
+    gpx:year     a rdf:Property;
+         :comment "Year of copyright.";
+         :range xsd:gYear .
+    
